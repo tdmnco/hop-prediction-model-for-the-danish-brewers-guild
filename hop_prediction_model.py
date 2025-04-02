@@ -32,7 +32,7 @@ target = multi_label_binarizer.fit_transform(read_data["Hops"])
 print("\n### Initializing hop varieties...\n")
 print(multi_label_binarizer.classes_)
 
-# Train model:
+# Train One-vs-Rest multi-label classification model:
 model_full = OneVsRestClassifier(LogisticRegression())
 model_full.fit(converted_features, target)
 
@@ -43,10 +43,10 @@ def get_user_input():
     print("\n### Ready to predict hops for your beer!\n")
 
     # Get user input:
-    style = input("Beer style: ").strip()
-    abv = float(input("ABV: ").strip())
-    minimum_rating = float(input("Minimum rating: ").strip())
-    confidence_level = float(input("Confidence level: ").strip())
+    style = input("Beer style:\t\t").strip()
+    abv = float(input("ABV:\t\t\t").strip())
+    minimum_rating = float(input("Minimum rating:\t\t").strip())
+    confidence_level = float(input("Confidence level:\t").strip())
 
     return style, abv, minimum_rating, confidence_level
 
@@ -99,7 +99,7 @@ while True:
     predicted_hops = predict_hops(style, abv, minimum_rating, confidence_level)
 
     # Log progress:
-    print(f"\nRecommended hops for {style} (ABV {abv}%) with rating above {minimum_rating}:")
+    print(f"\nPredicted hops for {style} (ABV {abv}%) with rating equal to or above {minimum_rating}:\n")
     print(predicted_hops[0])
 
     # Ask user to try again:
