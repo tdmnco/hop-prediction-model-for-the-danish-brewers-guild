@@ -181,7 +181,7 @@ def get_user_input():
     if choice == "1":
 
         # Get user input:
-        style = input("Beer style:\t\t").strip()
+        style = input("\nBeer style:\t\t").strip()
         abv = float(input("ABV:\t\t\t").strip())
         minimum_rating = float(input("Minimum rating:\t\t").strip())
         confidence_level = float(input("Confidence level:\t").strip())
